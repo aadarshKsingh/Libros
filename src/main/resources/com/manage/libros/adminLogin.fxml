@@ -46,7 +46,7 @@
          </TextField>
       </HBox>
       <HBox alignment="CENTER">
-         <Label fx:id="signinError" alignment="CENTER" contentDisplay="CENTER" prefHeight="39.0" prefWidth="86.0" text="error label">
+         <Label fx:id="signinError" alignment="CENTER" contentDisplay="CENTER" prefHeight="39.0" prefWidth="86.0">
             <font>
                <Font name="JetBrains Mono NL ExtraLight" size="13.0"/>
             </font>
