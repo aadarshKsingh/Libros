@@ -9,24 +9,24 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<TilePane alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="560.0" prefWidth="692.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<TilePane alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="560.0" prefWidth="692.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.manage.libros.AdminController">
     <children>
         <VBox alignment="TOP_RIGHT" prefHeight="555.0" prefWidth="686.0">
             <children>
-                <Button alignment="TOP_LEFT" contentDisplay="TOP" mnemonicParsing="false" style="-fx-background-color: transparent;" text="Logout" textAlignment="CENTER" />
+                <Button onAction="#logoutAdmin" alignment="TOP_LEFT" contentDisplay="TOP" mnemonicParsing="false" style="-fx-background-color: transparent;" text="Logout" textAlignment="CENTER" />
                 <Label alignment="CENTER" contentDisplay="CENTER" lineSpacing="20.0" prefHeight="150.0" prefWidth="688.0" text="Admin Dashboard" textAlignment="CENTER">
                     <font>
                         <Font name="JetBrains Mono NL ExtraBold" size="53.0" />
                     </font>
                 </Label>
                 <HBox alignment="CENTER_LEFT" prefHeight="53.0" prefWidth="591.0">
-                    <children>
-                        <Label alignment="CENTER_RIGHT" contentDisplay="CENTER" prefHeight="18.0" prefWidth="127.0" text="Username : ">
-                            <font>
-                                <Font name="JetBrains Mono ExtraBold" size="13.0" />
-                            </font></Label>
-                  <Label text="\$username" />
-                    </children>
+                    <Label alignment="CENTER_RIGHT" contentDisplay="CENTER" prefHeight="18.0" prefWidth="127.0"
+                           text="Username : ">
+                        <font>
+                            <Font name="JetBrains Mono ExtraBold" size="13.0"/>
+                        </font>
+                    </Label>
+                    <Label text="\$username"/>
                 </HBox>
 <!--                <HBox alignment="CENTER_LEFT" prefHeight="53.0" prefWidth="591.0">-->
 <!--                    <children>-->

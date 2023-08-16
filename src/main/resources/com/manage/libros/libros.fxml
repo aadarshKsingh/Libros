@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<TilePane alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="421.0" prefWidth="680.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<TilePane alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="421.0" prefWidth="680.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.manage.libros.Main">
    <children>
       <VBox alignment="CENTER" prefHeight="360.0" prefWidth="627.0">
          <children>
@@ -26,12 +26,12 @@
             </HBox>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
                <children>
-                  <Button fx:id="userLogin" alignment="CENTER" blendMode="HARD_LIGHT" contentDisplay="CENTER" graphicTextGap="10.0" mnemonicParsing="false" text="User Login" textAlignment="CENTER">
+                  <Button onAction="#userLogin" alignment="CENTER" blendMode="HARD_LIGHT" contentDisplay="CENTER" graphicTextGap="10.0" mnemonicParsing="false" text="User Login" textAlignment="CENTER">
                      <font>
                         <Font name="JetBrains Mono NL Light" size="21.0" />
                      </font>
                   </Button>
-                  <Button fx:id="adminLogin" alignment="CENTER" blendMode="HARD_LIGHT" contentDisplay="CENTER" mnemonicParsing="false" text="Admin Login" textAlignment="CENTER">
+                  <Button onAction="#adminLogin" alignment="CENTER" blendMode="HARD_LIGHT" contentDisplay="CENTER" mnemonicParsing="false" text="Admin Login" textAlignment="CENTER">
                      <font>
                         <Font name="JetBrains Mono NL ExtraLight" size="22.0" />
                      </font>
