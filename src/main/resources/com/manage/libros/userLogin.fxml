@@ -27,7 +27,7 @@
                     <Font name="JetBrains Mono ExtraBold" size="13.0"/>
                 </font>
             </Label>
-            <TextField fx:id="userUsername" prefHeight="35.0" prefWidth="215.0" promptText="Enter Username">
+            <TextField fx:id="loginUsername" prefHeight="35.0" prefWidth="215.0" promptText="Enter Username">
                 <font>
                     <Font name="JetBrains Mono ExtraLight" size="13.0"/>
                 </font>
@@ -39,15 +39,15 @@
                     <Font name="JetBrains Mono ExtraBold" size="13.0"/>
                 </font>
             </Label>
-            <TextField fx:id="userPassword" prefHeight="34.0" prefWidth="216.0" promptText="Enter Password">
+            <TextField fx:id="loginPassword" prefHeight="34.0" prefWidth="216.0" promptText="Enter Password">
                 <font>
                     <Font name="JetBrains Mono NL ExtraLight" size="13.0"/>
                 </font>
             </TextField>
         </HBox>
         <HBox alignment="CENTER">
-            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="39.0" prefWidth="86.0"
-                   text="error label">
+            <Label fx:id="loginError" alignment="CENTER" contentDisplay="CENTER" prefHeight="39.0" prefWidth="86.0"
+                  >
                 <font>
                     <Font name="JetBrains Mono NL ExtraLight" size="13.0"/>
                 </font>
@@ -72,7 +72,7 @@
             </Button>
         </HBox>
         <HBox alignment="CENTER">
-            <Label onMouseClicked="#signUp" alignment="CENTER" contentDisplay="CENTER" prefHeight="18.0"
+            <Label onMouseClicked="#goToSignup" alignment="CENTER" contentDisplay="CENTER" prefHeight="18.0"
                    prefWidth="143.0" text="New User? Signup" textAlignment="JUSTIFY">
                 <font>
                     <Font name="JetBrains Mono NL ExtraLight Italic" size="13.0"/>

@@ -24,14 +24,10 @@ public class AdminController {
         signinError.setText("");
     }
 
-    public void adminLogin() throws IOException, SQLException {
+    public void adminLogin() throws IOException {
         String serverName = "localhost";
         String mydatabase = "Libros";
         String url = "jdbc:mysql://" + serverName + "/" + mydatabase;
-
-//        String username = "root";
-//        String password = "";
-
 
         try {
             conn = DriverManager.getConnection(url,adminUsername.getText(),adminPasword.getText());
