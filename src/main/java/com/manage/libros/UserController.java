@@ -135,6 +135,16 @@ public class UserController{
         fxmlLoader = new FXMLLoader(Main.class.getResource("userLogin.fxml"));
         Main.mainStage.setScene(new Scene(fxmlLoader.load()));
     }
+
+    public void logoutUser(ActionEvent actionEvent) {
+        try {
+            conn.close();
+            fxmlLoader = new FXMLLoader(Main.class.getResource("libros.fxml"));
+            Main.getMainStage().setScene(new Scene(fxmlLoader.load()));
+        } catch (IOException | SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }
 
 

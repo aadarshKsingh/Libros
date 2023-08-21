@@ -9,46 +9,45 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<TilePane alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="560.0" prefWidth="692.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml/1">
-    <children>
-        <VBox alignment="TOP_RIGHT" prefHeight="555.0" prefWidth="686.0">
-            <children>
-                <Button alignment="TOP_LEFT" contentDisplay="TOP" mnemonicParsing="false" style="-fx-background-color: transparent;" text="Logout" textAlignment="CENTER" />
-                <Label alignment="CENTER" contentDisplay="CENTER" lineSpacing="20.0" prefHeight="150.0" prefWidth="688.0" text="User Dashboard" textAlignment="CENTER">
-                    <font>
-                        <Font name="JetBrains Mono NL ExtraBold" size="53.0" />
-                    </font>
-                </Label>
-                <HBox alignment="CENTER_LEFT" prefHeight="53.0" prefWidth="591.0">
-                    <children>
-                        <Label alignment="CENTER_RIGHT" contentDisplay="CENTER" prefHeight="18.0" prefWidth="127.0" text="Username : ">
-                            <font>
-                                <Font name="JetBrains Mono ExtraBold" size="13.0" />
-                            </font></Label>
-                        <Label text="\$username" />
-                    </children>
-                </HBox>
-<!--                <HBox alignment="CENTER_LEFT" prefHeight="53.0" prefWidth="591.0">-->
-<!--                    <children>-->
-<!--                        <Label alignment="CENTER_RIGHT" contentDisplay="CENTER" prefHeight="18.0" prefWidth="127.0" text="Total books issued : ">-->
-<!--                            <font>-->
-<!--                                <Font name="JetBrains Mono ExtraBold" size="13.0" />-->
-<!--                            </font></Label>-->
-<!--                        <Label text="\booksissued" />-->
-<!--                    </children>-->
-<!--                </HBox>-->
-                <TableView editable="true" prefHeight="327.0" prefWidth="686.0" style="-fx-background-color: #D3D3D3;">
-                    <columns>
-                        <TableColumn prefWidth="220.0" text="Book Name" />
-                        <TableColumn prefWidth="192.0" text="Author" />
-                        <TableColumn prefWidth="154.0" text="Year" />
-                        <TableColumn prefWidth="92.0" text="Stocks" />
-                    </columns>
-                    <columnResizePolicy>
-                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-                    </columnResizePolicy>
-                </TableView>
-            </children>
-        </VBox>
-    </children>
+<TilePane alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+          prefHeight="560.0" prefWidth="692.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.manage.libros.UserController">
+    <VBox alignment="TOP_RIGHT" prefHeight="555.0" prefWidth="686.0">
+        <Button onAction="#logoutUser" alignment="TOP_LEFT" contentDisplay="TOP" mnemonicParsing="false"
+                style="-fx-background-color: transparent;" text="Logout" textAlignment="CENTER"/>
+        <Label alignment="CENTER" contentDisplay="CENTER" lineSpacing="20.0" prefHeight="150.0" prefWidth="688.0"
+               text="User Dashboard" textAlignment="CENTER">
+            <font>
+                <Font name="JetBrains Mono NL ExtraBold" size="53.0"/>
+            </font>
+        </Label>
+        <HBox alignment="CENTER_LEFT" prefHeight="53.0" prefWidth="591.0">
+            <Label alignment="CENTER_RIGHT" contentDisplay="CENTER" prefHeight="18.0" prefWidth="127.0"
+                   text="Username : ">
+                <font>
+                    <Font name="JetBrains Mono ExtraBold" size="13.0"/>
+                </font>
+            </Label>
+            <Label text="\$username"/>
+        </HBox>
+        <!--                <HBox alignment="CENTER_LEFT" prefHeight="53.0" prefWidth="591.0">-->
+        <!--                    <children>-->
+        <!--                        <Label alignment="CENTER_RIGHT" contentDisplay="CENTER" prefHeight="18.0" prefWidth="127.0" text="Total books issued : ">-->
+        <!--                            <font>-->
+        <!--                                <Font name="JetBrains Mono ExtraBold" size="13.0" />-->
+        <!--                            </font></Label>-->
+        <!--                        <Label text="\booksissued" />-->
+        <!--                    </children>-->
+        <!--                </HBox>-->
+        <TableView editable="true" prefHeight="327.0" prefWidth="686.0" style="-fx-background-color: #D3D3D3;">
+            <columns>
+                <TableColumn prefWidth="220.0" text="Book Name"/>
+                <TableColumn prefWidth="192.0" text="Author"/>
+                <TableColumn prefWidth="154.0" text="Year"/>
+                <TableColumn prefWidth="92.0" text="Stocks"/>
+            </columns>
+            <columnResizePolicy>
+                <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
+            </columnResizePolicy>
+        </TableView>
+    </VBox>
 </TilePane>
