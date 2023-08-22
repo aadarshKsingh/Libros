@@ -20,7 +20,7 @@ public class AdminController implements Initializable{
     public TextField adminPasword;
     public Label signinError;
     public static Connection conn;
-    public TableView<Books> adminBooksTable;
+    public static TableView<Books> adminBooksTable;
     public TableColumn<Books, String> bname;
     public TableColumn<Books, String> bauthor;
     public TableColumn<Books, Integer> byear;
@@ -63,27 +63,11 @@ public class AdminController implements Initializable{
 //        conn.close();
     }
 
-    void insertBook() throws SQLException, IOException {
-        Stage newBook = new Stage();
-        newBook.setTitle("Add new book");
-
-        Scene newBookScene = new Scene(new FXMLLoader(getClass().getResource("newBook.fxml")).load());
-        newBook.setScene(newBookScene);
-        newBook.show();
-
-    }
 
 
 
-    public void logoutAdmin(){
-        try {
-            conn.close();
-          fxmlLoader = new FXMLLoader(Main.class.getResource("libros.fxml"));
-          Main.getMainStage().setScene(new Scene(fxmlLoader.load()));
-        } catch (IOException | SQLException e) {
-            throw new RuntimeException(e);
-        }
-    }
+
+
 
         @Override
         public void initialize(URL url, ResourceBundle resourceBundle) {
