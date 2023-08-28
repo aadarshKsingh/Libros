@@ -1,5 +1,6 @@
 package com.manage.libros;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
@@ -49,5 +50,8 @@ public class AdminLoginController {
         }
 
     }
-
+    public void homepage() throws IOException {
+        fxmlLoader = new FXMLLoader(Main.class.getResource("libros.fxml"));
+        Main.getMainStage().setScene(new Scene(fxmlLoader.load()));
+    }
 }
