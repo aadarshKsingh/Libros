@@ -26,13 +26,13 @@
          <opaqueInsets>
             <Insets left="10.0" right="10.0"/>
          </opaqueInsets>
-         <Button onAction="#userLogin" alignment="CENTER" blendMode="HARD_LIGHT" contentDisplay="CENTER"
+         <Button onAction="#user" alignment="CENTER" blendMode="HARD_LIGHT" contentDisplay="CENTER"
                  graphicTextGap="10.0" mnemonicParsing="false" text="User Login" textAlignment="CENTER">
             <font>
                <Font name="JetBrains Mono NL Light" size="21.0"/>
             </font>
          </Button>
-         <Button onAction="#adminLogin" alignment="CENTER" blendMode="HARD_LIGHT" contentDisplay="CENTER"
+         <Button onAction="#admin" alignment="CENTER" blendMode="HARD_LIGHT" contentDisplay="CENTER"
                  mnemonicParsing="false" text="Admin Login" textAlignment="CENTER">
             <font>
                <Font name="JetBrains Mono NL ExtraLight" size="22.0"/>

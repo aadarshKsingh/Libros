@@ -9,8 +9,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.stage.Stage;
-
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
@@ -19,7 +17,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ResourceBundle;
 
-public class BooksController implements Initializable {
+public class BooksAdminController implements Initializable {
+
     @FXML
     private TableView<Books> adminBooksTable;
     static ObservableList<Books> booksObservableList;
@@ -32,56 +31,64 @@ public class BooksController implements Initializable {
     @FXML
     public TableColumn<Books, Integer> bstocks;
 
-    public static Connection connnection;
+    public static Connection connection;
     private static ObservableList<Books> bookList;
     public static FXMLLoader fxmlLoader;
-    boolean fxmlFlag = true;
-    public BooksController() {
+    public BooksAdminController() {
         bookList = FXCollections.observableArrayList();
     }
 
-
-    static ObservableList<Books> getBooks(ResultSet rs) throws SQLException {
-        ObservableList<Books> books = FXCollections.observableArrayList();
-        while(rs.next()){
-           Books book = new Books(rs.getString("Book Name"),rs.getString("Author"),rs.getInt("Year"),rs.getInt("Stocks"));
-            books.add(book);
-            System.out.println(rs.getString("Book Name"));
-            System.out.println(rs.getString("Author"));
-        }
-        return books;
-    }
-
-
-
+    // loads books from mysql db
     public static void loadBooks(Connection conn) {
             String getDataQuery = "SELECT * FROM Books";
-            connnection = conn;
+            connection = conn;
             try{
-                Statement s = connnection.createStatement();
+                Statement s = connection.createStatement();
                 ResultSet rs = s.executeQuery(getDataQuery);
-                booksObservableList = getBooks(rs);
+                while(rs.next()){
+                    Books book = new Books(rs.getString("Book Name"),rs.getString("Author"),rs.getInt("Year"),rs.getInt("Stocks"));
+                    booksObservableList.add(book);
+                    System.out.println(rs.getString("Book Name"));
+                    System.out.println(rs.getString("Author"));
+                }
             } catch (SQLException e) {
                 throw new RuntimeException(e);
             }
-
     }
 
+    // Closes the connection and returns to home
     public void logoutAdmin(){
         try {
-            connnection.close();
+            connection.close();
             fxmlLoader = new FXMLLoader(Main.class.getResource("libros.fxml"));
             Main.getMainStage().setScene(new Scene(fxmlLoader.load()));
         } catch (IOException | SQLException e) {
             throw new RuntimeException(e);
         }
     }
-    @FXML
-    void insertBook(){
-        NewBookController nbc = new NewBookController();
-        nbc.addBook(connnection);
 
+    //inserts the book
+    @FXML
+    void insertBook() {
+        NewBookController nbc = new NewBookController();
+        nbc.addBook(connection,adminBooksTable);
+        updateTable();      // broken, doesnt update
     }
+
+
+    //---------------WIP-----------------//
+    public void updateTable(){
+        bname.setCellValueFactory(new PropertyValueFactory<Books,String>("title"));
+        bauthor.setCellValueFactory(new PropertyValueFactory<Books,String>("author"));
+        byear.setCellValueFactory(new PropertyValueFactory<Books,Integer>("year"));
+        bstocks.setCellValueFactory(new PropertyValueFactory<Books,Integer>("stocks"));
+        bookList = booksObservableList;
+        adminBooksTable.setItems(bookList);
+    }
+    //-----------------------------------//
+
+
+    // initializes the table
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
                 bname.setCellValueFactory(new PropertyValueFactory<Books,String>("title"));

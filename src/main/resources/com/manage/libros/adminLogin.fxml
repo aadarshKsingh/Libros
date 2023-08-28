@@ -11,7 +11,7 @@
 
 <TilePane alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
           prefHeight="470.0" prefWidth="584.0" xmlns="http://javafx.com/javafx"
-          xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.manage.libros.AdminController">
+          xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.manage.libros.AdminLoginController">
    <VBox alignment="TOP_RIGHT" prefHeight="471.0" prefWidth="587.0">
       <Button onAction="#homepage" alignment="TOP_LEFT" contentDisplay="TOP" mnemonicParsing="false"
               style="-fx-background-color: transparent;" text="Back" textAlignment="CENTER"/>
@@ -56,7 +56,7 @@
          <opaqueInsets>
             <Insets/>
          </opaqueInsets>
-         <Button onAction="#adminLogin" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false"
+         <Button onAction="#adminLoginButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false"
                  style="-fx-background-color: #d3d3d3; -fx-background-radius: 10;" text="Login"
                  textAlignment="CENTER">
             <font>

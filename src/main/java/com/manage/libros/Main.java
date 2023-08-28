@@ -8,6 +8,8 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+
+//Main UI
 public class Main extends Application {
     public static FXMLLoader fxmlLoader;
     static Stage mainStage;
@@ -28,12 +30,14 @@ public class Main extends Application {
         return mainStage;
     }
 
-    public void adminLogin(ActionEvent actionEvent) throws IOException {
-        fxmlLoader = new FXMLLoader(Main.class.getResource("adminLogin.fxml"));
+    // admin login button handler
+    public void admin(ActionEvent actionEvent) throws IOException {
+        fxmlLoader = new FXMLLoader(Main.class.getResource("adminLoginButton.fxml"));
         mainStage.setScene(new Scene(fxmlLoader.load()));
-
     }
-    public void userLogin(ActionEvent actionEvent) throws IOException {
+
+    // user login button handler
+    public void user(ActionEvent actionEvent) throws IOException {
         fxmlLoader = new FXMLLoader(Main.class.getResource("userLogin.fxml"));
         mainStage.setScene(new Scene(fxmlLoader.load()));
     }

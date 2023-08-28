@@ -5,6 +5,8 @@ import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
+
+//Books data model class
 public class Books {
     SimpleStringProperty title;
     SimpleStringProperty author;

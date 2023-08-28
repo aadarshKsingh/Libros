@@ -1,22 +1,15 @@
 package com.manage.libros;
 
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.input.MouseEvent;
-
 import java.io.IOException;
-import java.net.URL;
 import java.sql.*;
 import java.util.Arrays;
-import java.util.ResourceBundle;
 
-public class UserController{
+public class UserLoginSignupController {
 
     public TextField signupUsername;
     public TextField signupAge;
@@ -28,14 +21,17 @@ public class UserController{
     public TextField loginPassword;
     public Label loginError;
     FXMLLoader fxmlLoader;
-    public void homepage(ActionEvent actionEvent) throws IOException {
+    static Connection conn;
+
+
+    // leads back to home
+    public void homepage() throws IOException {
         fxmlLoader = new FXMLLoader(Main.class.getResource("libros.fxml"));
         Main.mainStage.setScene(new Scene(fxmlLoader.load()));
     }
 
-    static Connection conn;
-
-    public void resetFields(ActionEvent actionEvent) {
+    //resets the fields
+    public void resetFields() {
         signupUsername.setText("");
         signupAge.setText("");
         signupMail.setText("");
@@ -47,7 +43,7 @@ public class UserController{
     }
 
 
-    public void loginUser(ActionEvent actionEvent){
+    public void loginUser(){
         String serverName = "localhost";
         String mydatabase = "Libros";
         String url = "jdbc:mysql://" + serverName + "/" + mydatabase;
@@ -58,6 +54,7 @@ public class UserController{
            if(conn.isValid(1)){
                fxmlLoader = new FXMLLoader(Main.class.getResource("userPanel.fxml"));
                Main.mainStage.setScene(new Scene(fxmlLoader.load()));
+               BooksUserController.loadBooks(conn);
            }else{
                loginError.setText("Invalid credentials or inaccesible database");
            }
@@ -85,32 +82,48 @@ public class UserController{
         return true;
     }
 
-    public void signUp(ActionEvent mouseEvent) {
+    // adds a new user to Users table and generate a table of same name
+    public void signUp() {
         String serverName = "localhost";
         String mydatabase = "Libros";
         String url = "jdbc:mysql://" + serverName + "/" + mydatabase;
-
 
         boolean status = false;
         try {
             if(validate()){
                 conn = DriverManager.getConnection(url, "UserManager", "password");
+
+                // query to create user
                 String createUAquery = "CREATE USER '" + signupUsername.getText()+"'@'"+serverName + "' IDENTIFIED BY '" + signupPassword.getText()+"'";
+
+                // query to create table of same name
                 String createTablequery = "CREATE TABLE " + signupUsername.getText() + "(BookName VARCHAR(20),Author VARCHAR(20),Year INT(4))";
+
+                //query to grant permissions to the new user
                 String grantPrivquery = "GRANT SELECT,UPDATE on "+mydatabase+"."+signupUsername.getText()+" TO "+signupUsername.getText()+"@"+serverName;
 
+                //query to read original books table
+                String grantReadBookquery = "GRANT SELECT on"+mydatabase+"."+signupUsername.getText()+" TO Users"+"@"+serverName;
+
+                //updating users table with new user
                 PreparedStatement updateUsers = conn.prepareStatement("INSERT INTO Users VALUES(?,?,?,?,?)");
+
+                // creating statements and executing them
                 Statement createTable = conn.createStatement();
                 createTable.execute(createTablequery);
                 Statement createUA = conn.createStatement();
                 createUA.execute(createUAquery);
                 Statement grantPriv = conn.createStatement();
                 grantPriv.execute(grantPrivquery);
+                Statement grantRead = conn.createStatement();
+                grantRead.execute(grantReadBookquery);
+
+                // settings prepared statement vars
                 updateUsers.setString(1, signupUsername.getText());
                 updateUsers.setString(2, signupPassword.getText());
                 updateUsers.setInt(3, Integer.parseInt(signupAge.getText()));
                 updateUsers.setString(4, signupMail.getText());
-                updateUsers.setInt(5, Integer.parseInt("0"));
+                updateUsers.setInt(5, 0);
                 updateUsers.execute();
                 status = true;
             }
@@ -126,25 +139,19 @@ public class UserController{
 
     }
 
-    public void goToSignup(MouseEvent mouseEvent) throws IOException {
+    // leads to signup panel
+    public void goToSignup() throws IOException {
         fxmlLoader = new FXMLLoader(Main.class.getResource("userSignup.fxml"));
         Main.mainStage.setScene(new Scene(fxmlLoader.load()));
     }
 
-    public void goToSignin(MouseEvent mouseEvent) throws IOException {
+    //leads to signin pane;
+    public void goToSignin() throws IOException {
         fxmlLoader = new FXMLLoader(Main.class.getResource("userLogin.fxml"));
         Main.mainStage.setScene(new Scene(fxmlLoader.load()));
     }
 
-    public void logoutUser(ActionEvent actionEvent) {
-        try {
-            conn.close();
-            fxmlLoader = new FXMLLoader(Main.class.getResource("libros.fxml"));
-            Main.getMainStage().setScene(new Scene(fxmlLoader.load()));
-        } catch (IOException | SQLException e) {
-            throw new RuntimeException(e);
-        }
-    }
+
 }
 
 

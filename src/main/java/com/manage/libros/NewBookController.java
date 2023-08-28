@@ -2,13 +2,11 @@ package com.manage.libros;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
-import javafx.stage.Stage;
-
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -22,36 +20,38 @@ public class NewBookController {
     public TextField newBookYear;
     public TextField newBookAuthor;
     public TextField newBookName;
-
+    public Scene panelScene;
     public static Connection connection;
-    void addBook(Connection conn){
+    public static TableView<Books> booksTable;
+
+    // loads scene for adding book
+    void addBook(Connection conn,TableView<Books> adminBooksTable){
+        booksTable = adminBooksTable;
         connection = conn;
         try {
-            Stage newStage = new Stage();
             FXMLLoader loader = new FXMLLoader(getClass().getResource("newBook.fxml"));
-            Parent root = loader.load();
-            Scene scene = new Scene(root);
-            newStage.setScene(scene);
-            newStage.show();
+            panelScene = Main.getMainStage().getScene();
+            Main.mainStage.setScene(new Scene(loader.load()));
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    public void Book2DB(ActionEvent actionEvent) throws SQLException {
+    // updating DB with new book detail
+    public void Book2DB() throws SQLException, IOException {
         PreparedStatement newBook = connection.prepareStatement("INSERT INTO Books VALUES(?,?,?,?)");
         newBook.setString(1,newBookName.getText());
         newBook.setString(2,newBookAuthor.getText());
         newBook.setInt(3,Integer.parseInt(newBookYear.getText()));
         newBook.setInt(4,Integer.parseInt(newBookStocks.getText()));
         newBook.execute();
-        ((Stage)newBookYear.getScene().getWindow()).close();
-
-
-
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("adminPanel.fxml"));
+        Main.mainStage.setScene(new Scene(fxmlLoader.load()));
     }
 
-    public void cancelNewBook(ActionEvent actionEvent) {
-        ((Stage)newBookYear.getScene().getWindow()).close();
+    // cancel button back to admin panel
+    public void cancelNewBook(ActionEvent actionEvent) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("adminPanel.fxml"));
+        Main.mainStage.setScene(new Scene(fxmlLoader.load()));
     }
 }

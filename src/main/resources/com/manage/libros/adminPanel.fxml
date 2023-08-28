@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<TilePane alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="560.0" prefWidth="692.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.manage.libros.BooksController">
+<TilePane alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="560.0" prefWidth="692.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.manage.libros.BooksAdminController">
     <VBox alignment="TOP_RIGHT" prefHeight="555.0" prefWidth="686.0">
         <Button alignment="TOP_LEFT" contentDisplay="TOP" mnemonicParsing="false" onAction="#logoutAdmin" style="-fx-background-color: transparent;" text="Logout" textAlignment="CENTER" />
         <Label alignment="CENTER" contentDisplay="CENTER" lineSpacing="20.0" prefHeight="113.0" prefWidth="686.0" text="Admin Dashboard" textAlignment="CENTER">
@@ -23,7 +23,7 @@
                     <Font name="JetBrains Mono ExtraBold" size="13.0" />
                 </font>
             </Label>
-            <Label text="\$username" />
+            <Label text="root" />
         </HBox>
         <HBox alignment="CENTER_LEFT" prefHeight="15.0" prefWidth="686.0">
             <Label alignment="CENTER_RIGHT" contentDisplay="CENTER" prefHeight="18.0" prefWidth="159.0"
