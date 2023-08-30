@@ -42,6 +42,7 @@ public class BooksAdminController implements Initializable {
     public static void loadBooks(Connection conn) {
             String getDataQuery = "SELECT * FROM Books";
             connection = conn;
+            booksObservableList = FXCollections.observableArrayList();
             try{
                 Statement s = connection.createStatement();
                 ResultSet rs = s.executeQuery(getDataQuery);

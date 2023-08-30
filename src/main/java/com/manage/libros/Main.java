@@ -32,7 +32,7 @@ public class Main extends Application {
 
     // admin login button handler
     public void admin(ActionEvent actionEvent) throws IOException {
-        fxmlLoader = new FXMLLoader(Main.class.getResource("adminLoginButton.fxml"));
+        fxmlLoader = new FXMLLoader(Main.class.getResource("adminLogin.fxml"));
         mainStage.setScene(new Scene(fxmlLoader.load()));
     }
 
