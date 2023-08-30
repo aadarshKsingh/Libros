@@ -1,5 +1,6 @@
 package com.manage.libros;
 
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -29,14 +30,16 @@ public class BooksUserController implements Initializable {
     @FXML
     public TableColumn<Books, Integer> bstocksUser;
     public TableView<Books> userAllTables;
-
+    private static ObservableList<Books> bookList;
     static ObservableList<Books> booksObservableList;
+    public BooksUserController(){ bookList = FXCollections.observableArrayList(); }
 
     // loads books and set to table to show available books
     //------------------WIP-----------------//
     public static void loadBooks(Connection conn) {
         String getDataQuery = "SELECT * FROM Books";
         connection = conn;
+        booksObservableList = FXCollections.observableArrayList();
         try{
             Statement s = connection.createStatement();
             ResultSet rs = s.executeQuery(getDataQuery);

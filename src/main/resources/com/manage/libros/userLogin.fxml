@@ -57,7 +57,7 @@
             <opaqueInsets>
                 <Insets/>
             </opaqueInsets>
-            <Button onAction="#loginUser" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false"
+            <Button onAction="#userLoginButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false"
                     style="-fx-background-color: #d3d3d3; -fx-background-radius: 10;" text="Login"
                     textAlignment="CENTER">
                 <font>

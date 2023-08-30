@@ -43,7 +43,7 @@ public class UserLoginSignupController {
     }
 
 
-    public void loginUser(){
+    public void userLoginButton(){
         String serverName = "localhost";
         String mydatabase = "Libros";
         String url = "jdbc:mysql://" + serverName + "/" + mydatabase;
@@ -52,9 +52,10 @@ public class UserLoginSignupController {
        try{
            conn = DriverManager.getConnection(url, loginUsername.getText(), loginPassword.getText());
            if(conn.isValid(1)){
+               loginError.setText("");
+               BooksUserController.loadBooks(conn);
                fxmlLoader = new FXMLLoader(Main.class.getResource("userPanel.fxml"));
                Main.mainStage.setScene(new Scene(fxmlLoader.load()));
-               BooksUserController.loadBooks(conn);
            }else{
                loginError.setText("Invalid credentials or inaccesible database");
            }
@@ -101,9 +102,10 @@ public class UserLoginSignupController {
 
                 //query to grant permissions to the new user
                 String grantPrivquery = "GRANT SELECT,UPDATE on "+mydatabase+"."+signupUsername.getText()+" TO "+signupUsername.getText()+"@"+serverName;
-
+                System.out.println(grantPrivquery);
                 //query to read original books table
-                String grantReadBookquery = "GRANT SELECT on"+mydatabase+"."+signupUsername.getText()+" TO Users"+"@"+serverName;
+                String grantReadBookquery = "GRANT SELECT on "+mydatabase+".Books"+" TO "+signupUsername.getText()+"@"+serverName;
+                System.out.println(grantReadBookquery);
 
                 //updating users table with new user
                 PreparedStatement updateUsers = conn.prepareStatement("INSERT INTO Users VALUES(?,?,?,?,?)");
