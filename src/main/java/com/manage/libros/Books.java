@@ -1,9 +1,7 @@
 package com.manage.libros;
 
-import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
 
 
 //Books data model class
@@ -39,20 +37,5 @@ public class Books {
         return year.get();
     }
 
-    public StringProperty titleProperty(){
-        return title;
-    }
-
-    public StringProperty authorProperty() {
-        return author;
-    }
-
-    public IntegerProperty yearProperty() {
-        return year;
-    }
-
-    public IntegerProperty stocksProperty() {
-        return stocks;
-    }
 
 }
