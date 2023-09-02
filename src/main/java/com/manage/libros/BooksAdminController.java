@@ -30,7 +30,6 @@ public class BooksAdminController implements Initializable {
     public TableColumn<Books, Integer> byear;
     @FXML
     public TableColumn<Books, Integer> bstocks;
-
     public static Connection connection;
     private static ObservableList<Books> bookList;
     public static FXMLLoader fxmlLoader;
@@ -73,7 +72,7 @@ public class BooksAdminController implements Initializable {
     void insertBook() {
         NewBookController nbc = new NewBookController();
         nbc.addBook(connection,adminBooksTable);
-        updateTable();      // broken, doesnt update
+        updateTable();      // broken, doesnt update UI
     }
 
 

@@ -1,6 +1,5 @@
 package com.manage.libros;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -50,7 +49,7 @@ public class NewBookController {
     }
 
     // cancel button back to admin panel
-    public void cancelNewBook(ActionEvent actionEvent) throws IOException {
+    public void cancelNewBook() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("adminPanel.fxml"));
         Main.mainStage.setScene(new Scene(fxmlLoader.load()));
     }

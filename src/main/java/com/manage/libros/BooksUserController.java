@@ -11,7 +11,6 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.*;
-import java.util.Arrays;
 import java.util.ResourceBundle;
 
 public class BooksUserController implements Initializable {
@@ -26,7 +25,6 @@ public class BooksUserController implements Initializable {
     @FXML
     public TableColumn<Books, Integer> bstocksUser;
     public TableView<Books> userAllTables;
-    private static ObservableList<Books> bookList;
     static ObservableList<Books> booksObservableList;
 
     private static ObservableList<Books> issuedList;
@@ -38,7 +36,6 @@ public class BooksUserController implements Initializable {
     public TableColumn<Books, String> issuedName;
     public TableView<Books> issuedTable;
     public Label usernameID;
-    // public BooksUserController(){ bookList = FXCollections.observableArrayList(); issuedList = FXCollections.observableArrayList();}
 
 
     // loads books and set to table to show available books

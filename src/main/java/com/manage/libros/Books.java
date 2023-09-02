@@ -54,22 +54,5 @@ public class Books {
     public IntegerProperty stocksProperty() {
         return stocks;
     }
-    //////////////////////////////////////////////////////
-    ////////////////setters//////////////////////////////
 
-    public void setAuthor(String author) {
-        this.author.set(author);
-    }
-
-    public void setTitle(String title) {
-        this.title.set(title);
-    }
-
-    public void setYear(int year) {
-        this.year.set(year);
-    }
-
-    public void setStocks(int stocks) {
-        this.stocks.set(stocks);
-    }
 }

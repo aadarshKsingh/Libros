@@ -1,7 +1,6 @@
 package com.manage.libros;
 
 import javafx.application.Application;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -31,13 +30,13 @@ public class Main extends Application {
     }
 
     // admin login button handler
-    public void admin(ActionEvent actionEvent) throws IOException {
+    public void admin() throws IOException {
         fxmlLoader = new FXMLLoader(Main.class.getResource("adminLogin.fxml"));
         mainStage.setScene(new Scene(fxmlLoader.load()));
     }
 
     // user login button handler
-    public void user(ActionEvent actionEvent) throws IOException {
+    public void user() throws IOException {
         fxmlLoader = new FXMLLoader(Main.class.getResource("userLogin.fxml"));
         mainStage.setScene(new Scene(fxmlLoader.load()));
     }
