@@ -22,6 +22,7 @@ public class UserLoginSignupController {
     public Label loginError;
     FXMLLoader fxmlLoader;
     static Connection conn;
+    static String username;
 
 
     // leads back to home
@@ -49,10 +50,11 @@ public class UserLoginSignupController {
         String url = "jdbc:mysql://" + serverName + "/" + mydatabase;
         System.out.println(loginUsername.getText());
         System.out.println(loginPassword.getText());
-       try{
+        try{
            conn = DriverManager.getConnection(url, loginUsername.getText(), loginPassword.getText());
            if(conn.isValid(1)){
                loginError.setText("");
+               username = loginUsername.getText();
                BooksUserController.loadBooks(conn);
                fxmlLoader = new FXMLLoader(Main.class.getResource("userPanel.fxml"));
                Main.mainStage.setScene(new Scene(fxmlLoader.load()));
@@ -101,7 +103,7 @@ public class UserLoginSignupController {
                 String createTablequery = "CREATE TABLE " + signupUsername.getText() + "(BookName VARCHAR(20),Author VARCHAR(20),Year INT(4))";
 
                 //query to grant permissions to the new user
-                String grantPrivquery = "GRANT SELECT,UPDATE on "+mydatabase+"."+signupUsername.getText()+" TO "+signupUsername.getText()+"@"+serverName;
+                String grantPrivquery = "GRANT INSERT,DELETE, SELECT,UPDATE on "+mydatabase+"."+signupUsername.getText()+" TO "+signupUsername.getText()+"@"+serverName;
                 System.out.println(grantPrivquery);
                 //query to read original books table
                 String grantReadBookquery = "GRANT SELECT on "+mydatabase+".Books"+" TO "+signupUsername.getText()+"@"+serverName;
